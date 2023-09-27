@@ -18,7 +18,10 @@ const App = () => {
 
         {showLaskuri && <Laskuri />}
 
-        <Posts />
+        <Posts info="Nämä ovat yhtiön sosiaalisen median parhaita pomintoja."
+        tervehdys="Hello!" showLaskuri={showLaskuri}
+        />
+        
 
     </div>
   )
