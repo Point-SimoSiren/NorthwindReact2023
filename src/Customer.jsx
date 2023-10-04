@@ -12,9 +12,9 @@ const Customer = ({customer}) => {
 
  return(
      <div>
-        <h4>{customer.companyName}</h4>
+        <h4 onClick={() => setShowDetails(!showDetails)}>{customer.companyName}</h4>
         {showDetails && 
-        <div className="customerDetails">
+        <div className="customerDetails" onClick={() => setShowDetails(!showDetails)}>
             <table>
                 <thead>
                     <tr>
@@ -27,11 +27,11 @@ const Customer = ({customer}) => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{customer.contactName}</td>
+                        <td>{customer.address}</td>
+                        <td>{customer.city}</td>
+                        <td>{customer.country}</td>
+                        <td>{customer.phone}</td>
                     </tr>
                 </tbody>
             </table>

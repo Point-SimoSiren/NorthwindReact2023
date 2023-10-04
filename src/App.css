@@ -9,16 +9,16 @@ button {
   min-width: 40px;
 }
 
-
-
-.post {
-  max-width: 30%;
+.post, .customerDetails {
+  max-width: 50%;
   margin-left: 30%;
-  background-color: aqua;
-  border-color: blueviolet;
+  background-color: orange;
+  border-color: orangered;
   border-radius: 10px;
   border-width: 2px;
   border-style: solid;
   margin-top: 1%;
 }
+
+
 
