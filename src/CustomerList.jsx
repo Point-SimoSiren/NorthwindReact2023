@@ -7,6 +7,7 @@ const CustomerList = () => {
 
     // State määritys
     const [customers, setCustomers] = useState([])
+    const [search, setSearch] = useState("")
 
     // Use Effect funktio tulee ajetuksi aina alussa kerran
     useEffect(() => {
@@ -20,10 +21,18 @@ return(
 
         <h2>Customers</h2>
 
+        {/* Hakukenttä jonka muutos muuttaa search nimistä statea */}
+        <input onChange={({target}) => setSearch(target.value)} type="text" placeholder="Search by Companyname" />
 
         {/* Jos data saapunut niin customerit loopataan läpi ja renderöidään */}
-        {customers && customers.map(c => 
+        {customers && customers.map(c => {
+            let lowerCaseName = c.companyName.toLowerCase()
+            if (lowerCaseName.indexOf(search.toLowerCase()) > -1) {
+            return(
            <Customer key={c.customerId} customer={c} />
+            )
+            }
+        }
         )}
 
     </div>

@@ -14,7 +14,14 @@ const Customer = ({customer}) => {
      <div>
         <h4 onClick={() => setShowDetails(!showDetails)}>{customer.companyName}</h4>
         {showDetails && 
-        <div className="customerDetails" onClick={() => setShowDetails(!showDetails)}>
+        <div className="customerDetails">
+
+            <button className="hidebtn"  onClick={() => setShowDetails(!showDetails)}>X</button>
+            <h5>{customer.companyName}</h5>
+           
+            <button>edit</button>
+            <button>delete</button>
+           
             <table>
                 <thead>
                     <tr>

@@ -20,5 +20,8 @@ button {
   margin-top: 1%;
 }
 
+.hidebtn {
+  transform: translateX(600%);  
+}
 
 
