@@ -2,7 +2,8 @@ import React, {useState} from "react"
 import './App.css'
 import CustomerService from './Services/Customer'
 
-const CustomerAdd = () => {
+// Propsina välitetään setAdding funktio joka piilottaa formin jos niin halutaan
+const CustomerAdd = ({setAdding}) => {
 
     // State määritys
   const [CustomerId, setCustomerId] = useState('');
@@ -35,7 +36,9 @@ const CustomerAdd = () => {
   }
   
   CustomerService.addNew(newCustomer)
+  .then(data => alert(data))
 
+  }
 
  return(
      <div>
@@ -53,6 +56,7 @@ const CustomerAdd = () => {
             <input type="text" value={Phone} onChange={({target}) => setPhone(target.value)} placeholder="Phone" />
             <input type="text" value={Fax} onChange={({target}) => setFax(target.value)} placeholder="Fax" />
             <input type="submit" value="Save" />
+            <button onClick={() => setAdding(false)}>Back</button>
         </form>      
     </div>
   )
