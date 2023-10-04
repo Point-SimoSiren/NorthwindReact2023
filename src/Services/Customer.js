@@ -7,4 +7,9 @@ const getAll = () => {
     return request.then(response => response.data)
 }
 
-export default {getAll}
+const addNew = (object) => {
+    const request = axios.post(baseUrl, object)
+    return request.then(response => response.data)
+}
+
+export default {getAll, addNew}

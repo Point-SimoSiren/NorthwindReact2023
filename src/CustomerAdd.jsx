@@ -17,10 +17,30 @@ const CustomerAdd = () => {
   const [Phone, setPhone] = useState('');
   const [Fax, setFax] = useState('');
 
+  // Formin submitointifunktio
+  const submitForm = (event) => {
+    event.preventDefault()
+    var newCustomer = {
+      customerId: CustomerId.toUpperCase(),
+      companyName: CompanyName,
+      contactName: ContactName,
+      contactTitle: ContactTitle,
+      country: Country,
+      address: Address,
+      city: City,
+      region: Region,
+      postalCode: PostalCode,
+      phone: Phone,
+      fax: Fax
+  }
+  
+  CustomerService.addNew(newCustomer)
+
+
  return(
      <div>
         <h4>Adding new Customer</h4>
-        <form>
+        <form onSubmit={submitForm}>
             <input type="text" value={CustomerId} onChange={({target}) => setCustomerId(target.value)} placeholder="ID" />
             <input type="text" value={CompanyName} onChange={({target}) => setCompanyName(target.value)} placeholder="Company name" />
             <input type="text" value={ContactName} onChange={({target}) => setContactName(target.value)} placeholder="Contact name" />
