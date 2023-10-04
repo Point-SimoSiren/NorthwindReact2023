@@ -2,6 +2,7 @@ import './App.css'
 import Laskuri from './Laskuri'
 import React, {useState} from 'react'
 import Posts from './Posts'
+import CustomerList from './CustomerList'
 
 const App = () => {
 
@@ -17,6 +18,8 @@ const App = () => {
         {showLaskuri && <button onClick={() => setShowLaskuri(false)}>piilota laskuri</button>}
 
         {showLaskuri && <Laskuri />}
+
+        <CustomerList />
 
         <Posts info="Nämä ovat yhtiön sosiaalisen median parhaita pomintoja."
         tervehdys="Hello!" showLaskuri={showLaskuri}
