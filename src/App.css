@@ -24,4 +24,10 @@ button {
   transform: translateX(600%);  
 }
 
+.add-div {
+  max-width: 13%;
+  margin-left: 40%;
+  margin-bottom: 5%;
+}
+
 

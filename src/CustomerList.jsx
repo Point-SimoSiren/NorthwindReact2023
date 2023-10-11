@@ -10,6 +10,7 @@ const CustomerList = () => {
     const [customers, setCustomers] = useState([])
     const [search, setSearch] = useState("")
     const [adding, setAdding] = useState(false)
+    //const [reload, setReload] = useState(false)
 
     // Use Effect funktio tulee ajetuksi aina alussa kerran
     useEffect(() => {
@@ -24,7 +25,7 @@ return(
         <h2>Customers</h2>
         {!adding && <button onClick={() => setAdding(true)}>Add new customer</button>}
         {adding && <CustomerAdd setAdding={setAdding} />}
-
+        <br />
         {/* Hakukenttä jonka muutos muuttaa search nimistä statea */}
         <input onChange={({target}) => setSearch(target.value)} type="text" placeholder="Search by Companyname" />
 

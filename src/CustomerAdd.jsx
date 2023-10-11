@@ -37,11 +37,11 @@ const CustomerAdd = ({setAdding}) => {
   
   CustomerService.addNew(newCustomer)
   .then(data => alert(data))
-
+    window.location.reload()
   }
 
  return(
-     <div>
+     <div className="add-div">
         <h4>Adding new Customer</h4>
         <form onSubmit={submitForm}>
             <input type="text" value={CustomerId} onChange={({target}) => setCustomerId(target.value)} placeholder="ID" />
@@ -56,7 +56,7 @@ const CustomerAdd = ({setAdding}) => {
             <input type="text" value={Phone} onChange={({target}) => setPhone(target.value)} placeholder="Phone" />
             <input type="text" value={Fax} onChange={({target}) => setFax(target.value)} placeholder="Fax" />
             <input type="submit" value="Save" />
-            <button onClick={() => setAdding(false)}>Back</button>
+            <input type="submit" onClick={() => setAdding(false)} value="back" />
         </form>      
     </div>
   )
