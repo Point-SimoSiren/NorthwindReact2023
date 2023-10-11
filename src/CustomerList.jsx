@@ -4,7 +4,7 @@ import CustomerService from './Services/Customer'
 import Customer from "./Customer"
 import CustomerAdd from "./CustomerAdd"
 
-const CustomerList = () => {
+const CustomerList = ({setMessage, setIsPositive, setShowMessage}) => {
 
     // State määritys
     const [customers, setCustomers] = useState([])
@@ -24,7 +24,11 @@ return(
 
         <h2>Customers</h2>
         {!adding && <button onClick={() => setAdding(true)}>Add new customer</button>}
-        {adding && <CustomerAdd setAdding={setAdding} />}
+
+        {adding && <CustomerAdd setAdding={setAdding}
+        setMessage={setMessage} setIsPositive={setIsPositive} 
+        setShowMessage={setShowMessage} />}
+
         <br />
         {/* Hakukenttä jonka muutos muuttaa search nimistä statea */}
         <input onChange={({target}) => setSearch(target.value)} type="text" placeholder="Search by Companyname" />
@@ -34,7 +38,9 @@ return(
             let lowerCaseName = c.companyName.toLowerCase()
             if (lowerCaseName.indexOf(search.toLowerCase()) > -1) {
             return(
-           <Customer key={c.customerId} customer={c} />
+           <Customer key={c.customerId} customer={c}
+           setMessage={setMessage} setIsPositive={setIsPositive} 
+        setShowMessage={setShowMessage} />
             )
             }
         }

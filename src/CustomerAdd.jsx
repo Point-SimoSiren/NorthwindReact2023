@@ -3,7 +3,8 @@ import './App.css'
 import CustomerService from './Services/Customer'
 
 // Propsina välitetään setAdding funktio joka piilottaa formin jos niin halutaan
-const CustomerAdd = ({setAdding}) => {
+const CustomerAdd = ({setAdding, setMessage, setIsPositive, 
+  setShowMessage}) => {
 
     // State määritys
   const [CustomerId, setCustomerId] = useState('');
@@ -36,8 +37,26 @@ const CustomerAdd = ({setAdding}) => {
   }
   
   CustomerService.addNew(newCustomer)
-  .then(data => alert(data))
-    window.location.reload()
+  .then(data => {
+        setMessage(data)
+        setIsPositive(true)
+        setShowMessage(true)
+        setTimeout(() => {
+          setShowMessage(false)
+          window.location.reload()
+        } , 4000)
+    }
+    )
+    .catch (error => {
+        setMessage(error.message)
+        setIsPositive(false)
+        setShowMessage(true)
+        setTimeout(() => {
+          setShowMessage(false)
+          window.location.reload()
+        } , 6000)
+    })
+    
   }
 
  return(

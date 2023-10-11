@@ -4,11 +4,41 @@ import CustomerService from './Services/Customer'
 
 // Komponentti saa propsina näyttettävän asiakas-olion CustomerListin
 // loopista jossa tätä komponenttia kutsutaan
-const Customer = ({customer}) => {
+const Customer = ({customer, setMessage, setIsPositive, 
+    setShowMessage}) => {
 
     // State määritys
     const [showDetails, setShowDetails] = useState(false)
 
+
+    // Poistofunktio
+    const remove = (customer) => {
+        let answer = window.confirm("Removing customer " + customer.companyName)
+        if (answer === false) {
+            return
+        }
+        CustomerService.remove(customer.customerId)
+        .then(data => {
+            setMessage(data)
+            setIsPositive(true)
+            setShowMessage(true)
+            setTimeout(() => {
+                setShowMessage(false)
+                window.location.reload()
+            }, 4000)
+        
+        })
+        .catch(error => {
+            setMessage(error.message)
+            setIsPositive(false)
+            setShowMessage(true)
+            setTimeout(() => {
+                setShowMessage(false)
+                window.location.reload()
+            }, 6000)
+        })
+      
+    }
 
  return(
      <div>
@@ -20,7 +50,7 @@ const Customer = ({customer}) => {
             <h5>{customer.companyName}</h5>
            
             <button>edit</button>
-            <button>delete</button>
+            <button onClick={() => remove(customer)}>delete</button>
            
             <table>
                 <thead>
