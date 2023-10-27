@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import './App.css'
 import CustomerService from './Services/Customer'
+import CustomerEdit from "./CustomerEdit"
 
 // Komponentti saa propsina näyttettävän asiakas-olion CustomerListin
 // loopista jossa tätä komponenttia kutsutaan
@@ -9,7 +10,7 @@ const Customer = ({customer, setMessage, setIsPositive,
 
     // State määritys
     const [showDetails, setShowDetails] = useState(false)
-
+    const [editing, setEditing] = useState(false)
 
     // Poistofunktio
     const remove = (customer) => {
@@ -22,6 +23,7 @@ const Customer = ({customer, setMessage, setIsPositive,
             setMessage(data)
             setIsPositive(true)
             setShowMessage(true)
+            window.scrollTo(0, 0)
             setTimeout(() => {
                 setShowMessage(false)
                 window.location.reload()
@@ -32,6 +34,7 @@ const Customer = ({customer, setMessage, setIsPositive,
             setMessage(error.message)
             setIsPositive(false)
             setShowMessage(true)
+            window.scrollTo(0, 0)
             setTimeout(() => {
                 setShowMessage(false)
                 window.location.reload()
@@ -48,8 +51,12 @@ const Customer = ({customer, setMessage, setIsPositive,
 
             <button className="hidebtn"  onClick={() => setShowDetails(!showDetails)}>X</button>
             <h5>{customer.companyName}</h5>
+
+            {editing && <CustomerEdit setEditing={setEditing}
+            setMessage={setMessage} setIsPositive={setIsPositive} 
+            setShowMessage={setShowMessage} customer={customer}  />}
            
-            <button>edit</button>
+            <button onClick={() => setEditing(true)}>edit</button>
             <button onClick={() => remove(customer)}>delete</button>
            
             <table>

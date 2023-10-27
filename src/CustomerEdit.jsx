@@ -3,34 +3,27 @@ import './App.css'
 import CustomerService from './Services/Customer'
 
 // Propsina välitetään setAdding funktio joka piilottaa formin jos niin halutaan
-const CustomerAdd = ({setAdding, setMessage, setIsPositive, 
-  setShowMessage}) => {
+const CustomerEdit = ({setEditing, setMessage, setIsPositive, 
+  setShowMessage, customer}) => {
 
     // State määritys
-  const [CustomerId, setCustomerId] = useState('');
-  const [CompanyName, setCompanyName] = useState('');
-  const [ContactName, setContactName] = useState('');
-  const [ContactTitle, setContactTitle] = useState('');
-  const [Address, setAddress] = useState('');
-  const [City, setCity] = useState('');
-  const [Country, setCountry] = useState('');
-  const [Region, setRegion] = useState('');
-  const [PostalCode, setPostalCode] = useState('');
-  const [Phone, setPhone] = useState('');
-  const [Fax, setFax] = useState('');
+  const [CustomerId, setCustomerId] = useState(customer.customerId)
+  const [CompanyName, setCompanyName] = useState(customer.companyName)
+  const [ContactName, setContactName] = useState(customer.contactName)
+  const [ContactTitle, setContactTitle] = useState(customer.contactTitle)
+  const [Address, setAddress] = useState(customer.address)
+  const [City, setCity] = useState(customer.city)
+  const [Country, setCountry] = useState(customer.country)
+  const [Region, setRegion] = useState(customer.region)
+  const [PostalCode, setPostalCode] = useState(customer.postalCode)
+  const [Phone, setPhone] = useState(customer.phone)
+  const [Fax, setFax] = useState(customer.fax)
 
   // Formin submitointifunktio
   const submitForm = (event) => {
     event.preventDefault()
-
-    if (CustomerId.length !== 5)
-    {
-      alert("Customer id must contain exactly 5 capital letters.")
-      return
-    }
-
     var newCustomer = {
-      customerId: CustomerId.toUpperCase(),
+      customerId: customer.customerId,
       companyName: CompanyName,
       contactName: ContactName,
       contactTitle: ContactTitle,
@@ -43,11 +36,12 @@ const CustomerAdd = ({setAdding, setMessage, setIsPositive,
       fax: Fax
   }
   
-  CustomerService.addNew(newCustomer)
+  CustomerService.update(newCustomer)
   .then(data => {
         setMessage(data)
         setIsPositive(true)
         setShowMessage(true)
+        window.scrollTo(0, 0)
         setTimeout(() => {
           setShowMessage(false)
           window.location.reload()
@@ -58,6 +52,7 @@ const CustomerAdd = ({setAdding, setMessage, setIsPositive,
         setMessage(error.message)
         setIsPositive(false)
         setShowMessage(true)
+        window.scrollTo(0, 0)
         setTimeout(() => {
           setShowMessage(false)
           window.location.reload()
@@ -68,9 +63,9 @@ const CustomerAdd = ({setAdding, setMessage, setIsPositive,
 
  return(
      <div className="add-div">
-        <h4>Adding new Customer</h4>
+        <h4>Editing Customer {customer.companyName}</h4>
         <form onSubmit={submitForm}>
-            <input type="text" value={CustomerId} onChange={({target}) => setCustomerId(target.value)} placeholder="ID" />
+            <input type="text" disabled value={CustomerId} onChange={({target}) => setCustomerId(target.value)} placeholder="ID" />
             <input type="text" value={CompanyName} onChange={({target}) => setCompanyName(target.value)} placeholder="Company name" />
             <input type="text" value={ContactName} onChange={({target}) => setContactName(target.value)} placeholder="Contact name" />
             <input type="text" value={ContactTitle} onChange={({target}) => setContactTitle(target.value)} placeholder="Contact title" />
@@ -82,10 +77,10 @@ const CustomerAdd = ({setAdding, setMessage, setIsPositive,
             <input type="text" value={Phone} onChange={({target}) => setPhone(target.value)} placeholder="Phone" />
             <input type="text" value={Fax} onChange={({target}) => setFax(target.value)} placeholder="Fax" />
             <input type="submit" value="Save" />
-            <input type="submit" onClick={() => setAdding(false)} value="back" />
+            <input type="submit" onClick={() => setEditing(false)} value="back" />
         </form>      
     </div>
   )
 }
 
-export default CustomerAdd
+export default CustomerEdit
