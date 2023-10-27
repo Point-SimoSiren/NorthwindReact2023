@@ -2,7 +2,9 @@ import './App.css'
 import Laskuri from './Laskuri'
 import React, {useState} from 'react'
 import Posts from './Posts'
-import CustomerList from './CustomerList'
+import CustomerList from './customers/CustomerList'
+import UserList from './users/UserList'
+
 import Message from './Message'
 
 import Navbar from 'react-bootstrap/Navbar'
@@ -40,6 +42,11 @@ const [isPositive, setIsPositive] = useState(false)
         <Routes>
           <Route path="/customers"
           element={<CustomerList setMessage={setMessage} setIsPositive={setIsPositive} 
+          setShowMessage={setShowMessage} />}>
+          </Route>
+
+          <Route path="/users"
+          element={<UserList setMessage={setMessage} setIsPositive={setIsPositive} 
           setShowMessage={setShowMessage} />}>
           </Route>
           

@@ -1,6 +1,6 @@
 import React, {useState} from "react"
-import './App.css'
-import CustomerService from './Services/Customer'
+import '../App.css'
+import CustomerService from '../Services/Customer'
 
 // Propsina välitetään setAdding funktio joka piilottaa formin jos niin halutaan
 const CustomerAdd = ({setAdding, setMessage, setIsPositive, 

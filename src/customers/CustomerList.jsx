@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
-import './App.css'
-import CustomerService from './Services/Customer'
+import '../App.css'
+import CustomerService from '../Services/Customer'
 import Customer from "./Customer"
 import CustomerAdd from "./CustomerAdd"
 

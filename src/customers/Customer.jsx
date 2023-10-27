@@ -1,6 +1,6 @@
 import React, {useState} from "react"
-import './App.css'
-import CustomerService from './Services/Customer'
+import '../App.css'
+import CustomerService from '../Services/Customer'
 import CustomerEdit from "./CustomerEdit"
 
 // Komponentti saa propsina näyttettävän asiakas-olion CustomerListin
