@@ -14,7 +14,6 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 const App = () => {
 
   // App componentin statet
-  const [showLaskuri, setShowLaskuri] = useState(false)
   // Statet messagen näyttämistä varten
 const [showMessage, setShowMessage] = useState(false)
 const [message, setMessage] = useState('')
@@ -28,10 +27,9 @@ const [isPositive, setIsPositive] = useState(false)
           <Navbar bg="dark" variant="dark">
             <Nav className="mr-auto">
                 <Nav.Link href='/customers'>Customers</Nav.Link>
-                <Nav.Link href='/Laskuri' >Laskuri</Nav.Link>
-                <Nav.Link href='/Laskuri' >Laskuri</Nav.Link>
-                <Nav.Link href='/Laskuri' >Laskuri</Nav.Link>
-                <Nav.Link href='/Laskuri' >Laskuri</Nav.Link>
+                <Nav.Link href='/posts'>Some higlights</Nav.Link>
+                <Nav.Link href='/users'>Users</Nav.Link>
+                <Nav.Link href='/laskuri'>Laskuri</Nav.Link>
             </Nav>
           </Navbar>
      
@@ -52,7 +50,7 @@ const [isPositive, setIsPositive] = useState(false)
 
           <Route path="/laskuri" 
           element={<Laskuri />}>
-          </Route>
+        </Route>
         
         </Routes>
       </Router>
