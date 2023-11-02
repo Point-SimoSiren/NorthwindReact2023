@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import '../App.css'
 import UserService from '../Services/User'
-
+import UserAdd from "./UserAdd"
 
 const UserList = ({setMessage, setIsPositive, setShowMessage}) => {
 
@@ -24,9 +24,9 @@ return(
         <h2>Users</h2>
         {!adding && <button onClick={() => setAdding(true)}>Add new user</button>}
 
-        {/* {adding && <UserAdd setAdding={setAdding}
+        {adding && <UserAdd setAdding={setAdding}
         setMessage={setMessage} setIsPositive={setIsPositive} 
-        setShowMessage={setShowMessage} />} */}
+        setShowMessage={setShowMessage} />}
 
         <br />
         {/* Hakukenttä jonka muutos muuttaa search nimistä statea */}
