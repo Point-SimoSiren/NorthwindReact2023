@@ -49,7 +49,7 @@ return(
                         <td>{u.firstName} {u.lastName}</td>
                         <td>{u.phone}</td>
                         <td>{u.userName}</td>
-                        {u.accesslevelId > 1 ? <td>No</td> : <td>Yes</td>}
+                        {u.accessLevelId > 1 ? <td>No</td> : <td>Yes</td>}
                     </tr>
                     )}
 

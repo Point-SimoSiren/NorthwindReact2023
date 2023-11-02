@@ -40,7 +40,7 @@ const UserAdd = ({setAdding, setMessage, setIsPositive,
         setShowMessage(true)
         setTimeout(() => {
           setShowMessage(false)
-          //window.location.reload()
+          window.location.reload()
         } , 4000)
     }
     )
