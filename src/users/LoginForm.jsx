@@ -28,9 +28,9 @@ const LoginForm = ({setLoggedInUser, setMessage, setIsPositive,
     localStorage.setItem("token", response.data.token)
     
     // Asetetaan app komponentissa olevaan stateen
-    setLoggedInUser(response.data.username)
+    setLoggedInUser(response.data.userName)
 
-   setMessage(`Logged in as: ${userForAuth.username}`)
+   setMessage(`Logged in as: ${credentials.userName}`)
    setIsPositive(true)
    setShowMessage(true)
   
