@@ -12,6 +12,11 @@ const addNew = (object) => {
     return request.then(response => response.data)
 }
 
+const Login = (credentials) => {
+    const request = axios.post("https://localhost:7128/api/authentication", credentials)
+    return request.then(response => response)
+}
+
 const remove = (id) => {
     const request = axios.delete(baseUrl + "/" + id)
     return request.then(response => response.data)
@@ -22,4 +27,4 @@ const update = (user) => {
     return request.then(response => response.data)
 }
 
-export default {getAll, addNew, remove, update}
+export default {getAll, addNew, remove, update, Login}

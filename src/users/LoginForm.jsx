@@ -23,20 +23,19 @@ const LoginForm = ({setLoggedInUser, setMessage, setIsPositive,
     if (response.status === 200) {
  
     // Talletetaan tietoja selaimen local storageen (f12 application välilehti)
-    localStorage.setItem("username", response.data.userName)
-    localStorage.setItem("accesslevelId", response.data.accessLevelId)
+    localStorage.setItem("username", response.data.username)
+    localStorage.setItem("accesslevelId", response.data.accesslevelId)
     localStorage.setItem("token", response.data.token)
     
-    // Asetetaan app komponentissa olevaan stateen
-    setLoggedInUser(response.data.userName)
-
    setMessage(`Logged in as: ${credentials.userName}`)
    setIsPositive(true)
    setShowMessage(true)
   
    setTimeout(() => {
     setShowMessage(false)
-   }, 5000)
+      // Asetetaan app komponentissa olevaan stateen
+      setLoggedInUser(response.data.userName)
+   }, 3000)
 
 }
   })
@@ -54,17 +53,16 @@ const LoginForm = ({setLoggedInUser, setMessage, setIsPositive,
 
  return(
      <div className="add-div">
-        <h4>Adding new User</h4>
+        <h4>Login</h4>
         <form onSubmit={submitForm}>
            
             <input type="text" value={userName} onChange={({target}) => setUserName(target.value)} placeholder="Username" />
             <input type="password" value={password} onChange={({target}) => setPassword(target.value)} placeholder="Password" />
          
-            <input type="submit" value="Save" />
-            <input type="submit" onClick={() => setAdding(false)} value="back" />
+            <input type="submit" value="Login" />
         </form>      
     </div>
   )
 }
 
-export default UserAdd
+export default LoginForm
