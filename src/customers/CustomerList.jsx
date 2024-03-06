@@ -14,8 +14,8 @@ const CustomerList = ({setMessage, setIsPositive, setShowMessage}) => {
 
     // Use Effect funktio tulee ajetuksi aina alussa kerran
     useEffect(() => {
-        let token = localStorage.getItem("token")
-        CustomerService.setToken(token)
+        let token = localStorage.getItem("token") ///////////
+        CustomerService.setToken(token) /////////////
        CustomerService.getAll() // käytetään services kansiossa olevaa palvelua
        .then(data => setCustomers(data))
     }
